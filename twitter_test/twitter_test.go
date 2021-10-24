@@ -37,4 +37,9 @@ func TestTweet(t *testing.T) {
 	if lastTweet.Msg != tweet2.Msg && ok != true {
 		t.Fatalf("Failed to get the last message. got %s %d", lastTweet.Msg, lastTweet.Id)
 	}
+
+	tweetIds := twitter.SearchTweetsByTag("welcome")
+	if len(tweetIds) == 0 {
+		t.Fatalf("Expected a tweet with #welcome %v", tweetIds)
+	}
 }
